@@ -10,23 +10,20 @@ const images = [
     alt: "Tokyo at Night",
   },
   {
-    url: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    alt: "Red Lantern in an Alleyway",
+    url: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Kyoto sunset",
   },
 ];
 
-// make a selection of thumbnail images that load quickly
 //function to create thumbnails
 function createThumbnails() {
   const thumbContainer = document.getElementById("thumb-container");
-  {
-  }
+
   //loop through each image in the images array
   images.forEach(function (image) {
     const img = document.createElement("img");
     img.src = image.url;
     img.alt = image.alt;
-
     img.classList.add("thumbnail");
     img.addEventListener("click", function () {
       createBigImage(image);
@@ -34,24 +31,25 @@ function createThumbnails() {
     thumbContainer.appendChild(img);
   });
 }
-//thumbnail and display larger version of the image w description
+
 //function to display a larger image than original
 function createBigImage(image) {
-  const display = document.getElementById("display");
+  const display = document.getElementById("announcer");
   display.innerHTML = "";
-  const img = document.createElement("img");
-  img.src = image.url;
-  img.alt = image.alt;
-  display.appendChild(img);
+  const bigImg = document.createElement("img");
+  bigImg.src = image.url;
+  bigImg.alt = image.alt;
+  display.appendChild(bigImg);
+}
+
+//playing around with random image
+//Load a random image on entry
+function displayRandomImage() {
+  const randomIndex = Math.floor(Math.random() * images.length);
+  const randomImage = images[randomIndex];
+  createBigImage(randomImage);
+  console.log("Creating big image:", image);
 }
 
 createThumbnails();
-createBigImage();
-
-// make a selection of thumbnail images that load quickly
-
-//thumbnail and display larger version of the image w description
-
-//accessible considerations like aternative text for images and the ability to click next and previous
-
-//
+displayRandomImage();
