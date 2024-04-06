@@ -48,7 +48,6 @@ function displayRandomImage() {
   const randomIndex = Math.floor(Math.random() * images.length);
   const randomImage = images[randomIndex];
   createBigImage(randomImage);
-  console.log("Creating big image:", image);
 }
 
 createThumbnails();
